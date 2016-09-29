@@ -1,0 +1,42 @@
+buildscript {
+	ext {
+		springBootVersion = '1.4.1.RELEASE'
+	}
+	repositories {
+		mavenCentral()
+	}
+	dependencies {
+		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+	}
+}
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'spring-boot'
+
+jar {
+	baseName = 'fb-demo'
+	version = '0.0.1-SNAPSHOT'
+}
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+repositories {
+	mavenCentral()
+}
+
+
+dependencies { compile('org.springframework.boot:spring-boot-starter-web')
+	compile group: 'org.springframework.boot', name: 'spring-boot-starter-web', version:'1.4.1.RELEASE'
+	compile group: 'org.webjars', name: 'angularjs', version:'1.4.3'
+	compile group: 'org.webjars', name: 'jquery', version:'2.1.1'
+	compile group: 'org.webjars', name: 'bootstrap', version:'3.2.0'
+	compile group: 'org.webjars', name: 'webjars-locator', version:'0.32'
+	compile group: 'org.springframework.boot', name: 'spring-boot-starter-security', version:'1.4.1.RELEASE'
+	compile group: 'org.springframework.security.oauth', name: 'spring-security-oauth2', version:'2.0.11.RELEASE'
+	compile group: 'org.springframework.security', name: 'spring-security-config'
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter-actuator'
+	testCompile(group: 'org.springframework.boot', name: 'spring-boot-starter-test', version:'1.4.1.RELEASE') {
+		exclude(module: 'commons-logging')
+	}
+}
